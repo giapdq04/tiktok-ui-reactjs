@@ -3,11 +3,11 @@ import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faArrowRightFromBracket,
-    faArrowUpFromBracket,
     faCircleQuestion,
     faCircleXmark,
     faEarthAsia,
-    faEllipsisVertical, faGear,
+    faEllipsisVertical,
+    faGear,
     faKeyboard,
     faMagnifyingGlass,
     faSpinner,
@@ -24,6 +24,8 @@ import AccountItem from '~/components/AccountItem';
 import Menu from '~/components/Popper/Menu';
 import { faBitcoin } from '@fortawesome/free-brands-svg-icons';
 import { faUser } from '@fortawesome/free-regular-svg-icons';
+import { SearchIcon, UploadIcon } from '~/components/Icons';
+import { Image } from '~/components/Image';
 
 const cx = classNames.bind(styles);
 
@@ -129,7 +131,7 @@ function Header() {
                         <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />
 
                         <button className={cx('search-btn')}>
-                            <FontAwesomeIcon icon={faMagnifyingGlass} />
+                            <SearchIcon width='1.9rem' height='1.9rem' />
                         </button>
                     </div>
                 </HeadlessTippy>
@@ -141,7 +143,7 @@ function Header() {
                         currentUser ? (
                             <Tippy delay={[0, 200]} content={'Upload video'} placement={'bottom'}>
                                 <button className={cx('action-btn')}>
-                                    <FontAwesomeIcon icon={faArrowUpFromBracket} />
+                                    <UploadIcon />
                                 </button>
                             </Tippy>
                         ) : (
@@ -156,7 +158,10 @@ function Header() {
                     <Menu items={currentUser ? userMenu : MENU_ITEM} onChange={handleMenuChange}>
 
                         {currentUser ? (
-                            <img className={cx('user-avatar')} src="https://s.net.vn/CPrx" alt="nguyen van a" />
+                            <Image
+                                // errorImage='https://lh3.googleusercontent.com/ogw/AF2bZyjjFRMCWUzpP30Glo_X9xJAm55RgFF2pPXAHQKvrgwoUVOD=s32-c-mo'
+                                className={cx('user-avatar')}
+                                src="https://s.net.vn/CPrx123" alt="nguyen van a" />
                         ) : (<button className={cx('more-btn')}>
                             <FontAwesomeIcon icon={faEllipsisVertical} />
                         </button>)
