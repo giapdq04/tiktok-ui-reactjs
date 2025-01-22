@@ -10,40 +10,40 @@ const cx = classNames.bind(styles);
 
 
 function Menu({
-                  children, items,
-                  onChange = () => {
-                  },
-              }) {
+    children, items,
+    onChange = () => {
+    },
+    hideOnClick = false
+}) {
 
     const [history, setHistory] = useState([{ data: items }]);
-
-    // console.log(history);
 
     const current = history[history.length - 1];
 
     const renderItems = () =>
         current.data.map((item, index) => {
-                const isParent = !!item.children;
+            const isParent = !!item.children;
 
-                return (
-                    <MenuItem data={item} key={index} onClick={() => {
-                        if (isParent) {
-                            setHistory([...history, item.children]);
-                        } else {
-                            onChange(item);
-                        }
-                    }} />
-                );
-            },
+            return (
+                <MenuItem data={item} key={index} onClick={() => {
+                    if (isParent) {
+                        setHistory([...history, item.children]);
+                    } else {
+                        onChange(item);
+                    }
+                }} />
+            );
+        },
         );
 
     return (
         <Tippy
-            offset={[12,8]}
+            offset={[12, 8]}
             delay={[0, 500]}
             onHide={() => {
                 setHistory(prev => prev.slice(0, 1));
             }}
+            hideOnClick={hideOnClick}
             interactive
             placement={'bottom-end'}
             render={(attrs) => (

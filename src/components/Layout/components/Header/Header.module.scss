@@ -20,6 +20,10 @@
   padding: 0 var(--default-layout-horizontal-spacer);
 }
 
+.logo-link {
+  display: flex;
+}
+
 
 .actions {
   display: flex;
@@ -35,13 +39,28 @@
 }
 
 .action-btn {
-  background-color: transparent;
-  font-size: 2.4rem;
-  color: #161823;
-  padding: 4px 12px;
+  position: relative;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  font-size: 2.2rem;
+  color: #161823;
+  background-color: transparent;
+  padding: 4px 10px;
+  cursor: pointer;
+}
+
+.badge {
+  position: absolute;
+  top: -3px;
+  right: 0px;
+  padding: 0px 6px;
+  height: 2rem;
+  line-height: 2rem;
+  border-radius: 10px;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--white);
+  font-family: 'ProximaNova', sans-serif;
+  background-color: var(--primary);
 }
 
 .user-avatar {
