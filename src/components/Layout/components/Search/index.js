@@ -65,48 +65,51 @@ const Search = () => {
 
 
     return (
-        <HeadlessTippy
-            interactive
-            visible={showResult && searchResult.length > 0}
-            onClickOutside={handleHideResult}
-            render={(attrs) => (
-                <div className={cx('search-result')} tabIndex="-1" {...attrs}>
-                    <PopperWrapper>
-                        <h4 className={cx('search-title')}>Accounts</h4>
-                        {
-                            searchResult.map(account => (
-                                <AccountItem key={account.id} account={account} />
-                            ))
-                        }
-                    </PopperWrapper>
-                </div>
-            )}
-        >
-            <div className={cx('search')}>
-                <input
-                    ref={searchInputRef}
-                    value={searchValue}
-                    onChange={e => handleChange(e.target.value)}
-                    placeholder="Search accounts and videos"
-                    spellCheck={false}
-                    onFocus={() => setShowResult(true)}
-                />
-                {
-                    searchValue.length > 0 && !loading && (
-                        <button onClick={handleClear} className={cx('clear')}>
-                            <FontAwesomeIcon icon={faCircleXmark} />
-                        </button>
-                    )
-                }
-                {
-                    loading && <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />
-                }
+        //
+        <div>
+            <HeadlessTippy
+                interactive
+                visible={showResult && searchResult.length > 0}
+                onClickOutside={handleHideResult}
+                render={(attrs) => (
+                    <div className={cx('search-result')} tabIndex="-1" {...attrs}>
+                        <PopperWrapper>
+                            <h4 className={cx('search-title')}>Accounts</h4>
+                            {
+                                searchResult.map(account => (
+                                    <AccountItem key={account.id} account={account} />
+                                ))
+                            }
+                        </PopperWrapper>
+                    </div>
+                )}
+            >
+                <div className={cx('search')}>
+                    <input
+                        ref={searchInputRef}
+                        value={searchValue}
+                        onChange={e => handleChange(e.target.value)}
+                        placeholder="Search accounts and videos"
+                        spellCheck={false}
+                        onFocus={() => setShowResult(true)}
+                    />
+                    {
+                        searchValue.length > 0 && !loading && (
+                            <button onClick={handleClear} className={cx('clear')}>
+                                <FontAwesomeIcon icon={faCircleXmark} />
+                            </button>
+                        )
+                    }
+                    {
+                        loading && <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />
+                    }
 
-                <button className={cx('search-btn')} onMouseDown={e => e.preventDefault()}>
-                    <SearchIcon width='1.9rem' height='1.9rem' />
-                </button>
-            </div>
-        </HeadlessTippy>
+                    <button className={cx('search-btn')} onMouseDown={e => e.preventDefault()}>
+                        <SearchIcon width='1.9rem' height='1.9rem' />
+                    </button>
+                </div>
+            </HeadlessTippy>
+        </div>
     )
 }
 

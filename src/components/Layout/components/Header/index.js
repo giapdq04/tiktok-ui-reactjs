@@ -41,7 +41,7 @@ const MENU_ITEM = [
                     type: 'language',
                     code: 'vi',
                     title: 'Tiếng Việt',
-                },
+                }
             ],
         },
     },

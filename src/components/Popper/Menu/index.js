@@ -52,7 +52,9 @@ function Menu({
                         {history.length > 1 && <Header title={'Language'} onBack={() => {
                             setHistory(prevState => prevState.slice(0, prevState.length - 1));
                         }} />}
-                        {renderItems()}
+                        <div className={cx('menu-scrollable')}>
+                            {renderItems()}
+                        </div>
                     </Wrapper>
                 </div>
             )}
